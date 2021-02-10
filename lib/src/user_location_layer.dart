@@ -305,7 +305,7 @@ class _MapsPluginLayerState extends State<MapsPluginLayer>
                   widget.options.onTapFAB();
                 }
               },
-              /*child: widget.options.moveToCurrentLocationFloatingActionButton ??
+              child: widget.options.moveToCurrentLocationFloatingActionButton ??
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.blueAccent,
@@ -318,7 +318,7 @@ class _MapsPluginLayerState extends State<MapsPluginLayer>
                       Icons.my_location,
                       color: Colors.white,
                     ),
-                  ),*/
+                  ),
             ),
           )
         : Container();
