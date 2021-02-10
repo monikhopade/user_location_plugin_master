@@ -282,7 +282,7 @@ class _MapsPluginLayerState extends State<MapsPluginLayer>
       widget.options.markers.add(_locationMarker);
     }
 
-    return widget.options.showMoveToCurrentLocationFloatingActionButton
+    /*return widget.options.showMoveToCurrentLocationFloatingActionButton
         ? Positioned(
             bottom: widget.options.fabBottom,
             right: widget.options.fabRight,
@@ -321,7 +321,7 @@ class _MapsPluginLayerState extends State<MapsPluginLayer>
                   ),
             ),
           )
-        : Container();
+        : Container();*/
   }
 
   void animatedMapMove(
