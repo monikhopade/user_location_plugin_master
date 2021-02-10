@@ -283,7 +283,44 @@ class _MapsPluginLayerState extends State<MapsPluginLayer>
     }
 
     return widget.options.showMoveToCurrentLocationFloatingActionButton
-        ? Container()
+        ? Positioned(
+            bottom: widget.options.fabBottom,
+            right: widget.options.fabRight,
+            height: widget.options.fabHeight,
+            width: widget.options.fabWidth,
+            child: InkWell(
+              hoverColor: Colors.blueAccent[200],
+              onTap: () {
+                if (initialStateOfupdateMapLocationOnPositionChange) {
+                  setState(() {
+                    widget.options.updateMapLocationOnPositionChange = false;
+                  });
+                }
+
+                ///TODO: initialize listens to various streams without cancelling them first. (this causes undisposed streams to keep listening)
+                //steps to reproduce: 1. open map, 2. click on FAB, 3. exit map.
+                initialize();
+                _moveMapToCurrentLocation(zoom: widget.options.defaultZoom);
+                if (widget.options.onTapFAB != null) {
+                  widget.options.onTapFAB();
+                }
+              },
+              /*child: widget.options.moveToCurrentLocationFloatingActionButton ??
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, blurRadius: 10.0),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.my_location,
+                      color: Colors.white,
+                    ),
+                  ),*/
+            ),
+          )
         : Container();
   }
 
